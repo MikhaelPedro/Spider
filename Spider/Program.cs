@@ -6,32 +6,43 @@ namespace Spider
     {
         static void Main(string[] args)
         {
-            Console.WriteLine();
-            Console.WriteLine("|------------------------------------------|");
-            Console.WriteLine("| Digite Qual Spider você deseja utilizar: |");
-            Console.WriteLine("| Digite 1 para o 1° Spider:               |");
-            Console.WriteLine("| Digite 2 para o 2° Spider:               |");
-            Console.WriteLine("| Digite Exit, para encerrar o processo:   |");
-            Console.WriteLine("|------------------------------------------|");
-            Console.Write("| Comando: ");
-            string acao = Console.ReadLine();
-            if(acao != "Exit" )
-            {  
-                if (acao == "1")
+            int Aux = 0;
+            while (Aux == 0)
+            {
+
+
+                Console.WriteLine();
+                Console.WriteLine("        |------------------------------------------|");
+                Console.WriteLine("        | Digite Qual Spider você deseja utilizar: |");
+                Console.WriteLine("        | Digite 1 para o 1° Spider:               |");
+                Console.WriteLine("        | Digite 2 para o 2° Spider:               |");
+                Console.WriteLine("        | Digite Exit, para encerrar o processo:   |");
+                Console.WriteLine("        |------------------------------------------|");
+                Console.Write("        | Comando: ");
+                string acao = Console.ReadLine();
+
+                switch (acao)
                 {
-                    Console.WriteLine("| Você está no Spider 1");
-                }
-                else if (acao == "2")
-                {
-                    Console.WriteLine("| Você está no Spider 2");
-                }
-                else
-                {
-                    Console.WriteLine("| Comando inválido, favor digitar seu comando novamente");
+                    case "1":
+                        Console.WriteLine("        | Você está no Spider 1");
+                        break;
+                    case "2":
+                        Console.WriteLine("        | Você está no Spider 2");
+                        break;
+                    case "exit":
+                    case "Exit":
+                    case "EXIT":
+                        Aux = 1;
+                        //Console.WriteLine("|------------------------------------------|");
+
+                        break;
+                    default:
+                        Console.WriteLine("        | Comando inválido, favor digitar seu comando novamente");
+                        break;
+
                 }
             }
-            Console.WriteLine("|------------------------------------------|");
-
+            Console.WriteLine("        |------------------------------------------|");
         }
     }
 }
