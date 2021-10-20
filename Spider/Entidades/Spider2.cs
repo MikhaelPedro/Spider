@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Spider.Entidades
+namespace _Spider.Entidades
 {
-    class Spider_2
+    class Spider2
     {
     }
 }

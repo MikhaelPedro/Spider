@@ -1,12 +1,13 @@
-﻿using Spider.Entidades;
+﻿using Refit;
+using RefitCepExample;
 using System;
 using System.Threading.Tasks;
 
-namespace Spider
-{
+namespace _Spider
+{ 
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             int Aux = 0;
 
@@ -21,57 +22,49 @@ namespace Spider
                 Console.WriteLine("        | Digite 2 para o 2° Spider:                               |");
                 Console.WriteLine("        | Digite Exit, para encerrar o processo:                   |");
                 Console.WriteLine("        |----------------------------------------------------------|");
-                Console.Write("        | Comando: ");
+                Console.Write("          Comando: ");
                 string acao = Console.ReadLine();
-
+                acao = acao.ToLower();
                 switch (acao)
                 {
                     case "1":
+                        //Texto de Apresentação do Modulo E o Input
                         Console.WriteLine("        |----------------------------------------------------------|");
                         Console.WriteLine("        |                   Você está no Spider 1!                 |");
                         Console.WriteLine("        |----------------------------------------------------------|");
-                        Console.Write("        | Digite o CEP: ");
+                        Console.Write("          Digite o CEP: ");
+
+                        //Tratamento do dado e envio da Consulta
                         string cep = Console.ReadLine();
-                        //Spider_1 spider_1 = new Spider_1(cep);
-                        //spider_1.ADDCEP(cep);
-                        //Console.WriteLine(spider_1.CEP);
-                        var repositorio = new SpiderRepositorio(cep);
+                        var cepClient = RestService.For<ICepApiService>("https://viacep.com.br");
+                        Console.WriteLine();
+                        Console.WriteLine("          Consultando dados do Cep:" + cep + "...\n");
+                        var address = await cepClient.GetAddressAsync(cep);
+                        Console.WriteLine(address.ToString());
 
-                        var usuarioTask = repositorio.GetSpidersAsync(cep);
-                        usuarioTask.ContinueWith(task =>
-                        {
-                            System.Collections.Generic.List<Spider_1> usuario = task.Result;
-                            foreach (var u in usuario)
-                                Console.WriteLine(u.ToString());
-                            Environment.Exit(0);
-
-                        },
-                        TaskContinuationOptions.OnlyOnRanToCompletion
-                        );
-                        Console.ReadLine();
                         break;
                     case "2":
                         Console.WriteLine("        |----------------------------------------------------------|");
                         Console.WriteLine("        |                   Você está no Spider 2!                 |");
                         Console.WriteLine("        |----------------------------------------------------------|");
-                        Console.Write("        | Digite o CNPJ: ");
+                        Console.Write("          Digite o CNPJ: ");
                         string cnpj = Console.ReadLine();
 
                         break;
                     case "exit":
-                    case "Exit":
-                    case "EXIT":
                         Aux = 1;
-                        //Console.WriteLine("|------------------------------------------|");
-
                         break;
                     default:
-                        Console.WriteLine("        | Comando inválido, favor digitar seu comando novamente");
+                        Console.WriteLine("        |----------------------------------------------------------|");
+                        Console.WriteLine("        | Comando inválido, favor digitar seu comando novamente    |");
+                        Console.WriteLine("        |----------------------------------------------------------|");
                         break;
 
                 }
             }
             Console.WriteLine("        |----------------------------------------------------------|");
-        }
+            Console.WriteLine("        |                       FÌM DA CONSULTA                    |");
+            Console.WriteLine("        |----------------------------------------------------------|");
+        }       
     }
 }

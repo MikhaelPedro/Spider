@@ -1,29 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using Newtonsoft.Json;
 
-namespace Spider.Entidades
+namespace _Spider.Entidades
 {
     public class Spider_1
     {
-        public string CEP { get; set; }
-        public string Logradouro{ get; set; }
+        [JsonProperty("cep")]
+        public string Cep { get; set; }
+        [JsonProperty("logradouro")]
+        public string Logradouro { get; set; }
+        [JsonProperty("complemento")]
+        public string Complemento { get; set; }
+        [JsonProperty("bairro")]
         public string Bairro { get; set; }
+        [JsonProperty("localidade")]
         public string Localidade { get; set; }
-        public string UF { get; set; }
+        [JsonProperty("uf")]
+        public string Uf { get; set; }
+        [JsonProperty("unidade")]
+        public string Unidade { get; set; }
+        [JsonProperty("ibge")]
+        public string Ibge { get; set; }
+        [JsonProperty("gia")]
+        public string Gia { get; set; }
 
+
+        //Retorno da Consulta
         public override string ToString()
         {
-            return string.Format($"{CEP} - {Logradouro}");
+            return $"          CEP: {Cep}\n" +
+                $"          Logradouro: {Logradouro}\n" +
+                $"          Bairro: {Bairro}\n" +
+                $"          Localidade: {Localidade}\n";
         }
-        //public Spider_1(string cep)
-        //{
-        //    CEP = cep;
-        //}
-
-        //public void ADDCEP(string cep)
-        //{
-        //    CEP = cep + "1";
-        //}
     }
 }
+//Console.Write($"\nLogradouro:{address.Logradouro}\nBairro:{address.Bairro}" +
+//                            $"\nEstado:{address.Uf}\nCódigo Ibge:{address.Ibge}");
