@@ -2,6 +2,8 @@
 using RefitCepExample;
 using System;
 using System.Threading.Tasks;
+using System.IO;
+using System.Text;
 
 namespace _Spider
 { 
@@ -10,11 +12,21 @@ namespace _Spider
         static async Task Main(string[] args)
         {
             int Aux = 0;
+            int i = 0;
 
             while (Aux == 0)
             {
+                
 
+                FileInfo aFile = new FileInfo("C:\\Users\\Mikhael Pedro\\Desktop\\" + "Backup" + i.ToString() + ".txt");
+                bool verifica = aFile.Exists;
+                if(verifica != false)
+                {
+                    aFile.Delete();
+                }
+                string path = "C:\\Users\\Mikhael Pedro\\Desktop\\" + "Backup" + i.ToString() + ".txt";
 
+                StreamWriter valor = new StreamWriter(path, true, Encoding.ASCII);
                 Console.WriteLine();
                 Console.WriteLine("        |----------------------------------------------------------|");
                 Console.WriteLine("        | Digite Qual Spider você deseja utilizar:                 |");
@@ -43,6 +55,8 @@ namespace _Spider
                         {
                             var address = await cepClient.GetAddressAsync(cep);
                             Console.WriteLine(address.ToString());
+                            valor.WriteLine(address.ToString());
+                            valor.Close();
                         }
                         catch
                         {
@@ -61,6 +75,8 @@ namespace _Spider
                         Console.WriteLine("          Consultando dados do CNPJ:" + cnpj + "...\n");
                         var data = await cnpjClient.GetDataAsync(cnpj);
                         Console.WriteLine(data.ToString());
+                        valor.WriteLine(data.ToString());
+                        valor.Close();
                         break;
 
                     case "exit":
@@ -70,9 +86,9 @@ namespace _Spider
                         Console.WriteLine("        |----------------------------------------------------------|");
                         Console.WriteLine("        | Comando inválido, favor digitar seu comando novamente    |");
                         Console.WriteLine("        |----------------------------------------------------------|");
-                        break;
-
+                        break;                     
                 }
+                i++;
             }
             Console.WriteLine("        |----------------------------------------------------------|");
             Console.WriteLine("        |                       FIM DA CONSULTA                    |");
