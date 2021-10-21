@@ -38,19 +38,31 @@ namespace _Spider
                         string cep = Console.ReadLine();
                         var cepClient = RestService.For<ICepApiService>("https://viacep.com.br");
                         Console.WriteLine();
-                        Console.WriteLine("          Consultando dados do Cep:" + cep + "...\n");
-                        var address = await cepClient.GetAddressAsync(cep);
-                        Console.WriteLine(address.ToString());
-
+                        Console.WriteLine("          Consultando dados do CEP:" + cep + "...\n");
+                        try
+                        {
+                            var address = await cepClient.GetAddressAsync(cep);
+                            Console.WriteLine(address.ToString());
+                        }
+                        catch
+                        {
+                            Console.WriteLine("          CEP Inválido!\n");
+                        }                        
                         break;
+
                     case "2":
                         Console.WriteLine("        |----------------------------------------------------------|");
                         Console.WriteLine("        |                   Você está no Spider 2!                 |");
                         Console.WriteLine("        |----------------------------------------------------------|");
                         Console.Write("          Digite o CNPJ: ");
                         string cnpj = Console.ReadLine();
-
+                        var cnpjClient = RestService.For<ICnpjApiService>("https://www.receitaws.com.br");
+                        Console.WriteLine();
+                        Console.WriteLine("          Consultando dados do CNPJ:" + cnpj + "...\n");
+                        var data = await cnpjClient.GetDataAsync(cnpj);
+                        Console.WriteLine(data.ToString());
                         break;
+
                     case "exit":
                         Aux = 1;
                         break;
@@ -63,7 +75,7 @@ namespace _Spider
                 }
             }
             Console.WriteLine("        |----------------------------------------------------------|");
-            Console.WriteLine("        |                       FÌM DA CONSULTA                    |");
+            Console.WriteLine("        |                       FIM DA CONSULTA                    |");
             Console.WriteLine("        |----------------------------------------------------------|");
         }       
     }

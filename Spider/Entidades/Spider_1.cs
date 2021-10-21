@@ -30,7 +30,8 @@ namespace _Spider.Entidades
             return $"          CEP: {Cep}\n" +
                 $"          Logradouro: {Logradouro}\n" +
                 $"          Bairro: {Bairro}\n" +
-                $"          Localidade: {Localidade}\n";
+                $"          Localidade: {Localidade}\n" +
+                $"          UF: {Uf}\n";
         }
     }
 }
