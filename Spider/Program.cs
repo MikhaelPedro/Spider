@@ -13,18 +13,26 @@ namespace _Spider
         {
             int Aux = 0;
             int i = 0;
-
+            //DateTime Id = new DateTime();
             while (Aux == 0)
             {
-                
+
 
                 FileInfo aFile = new FileInfo("C:\\Users\\Mikhael Pedro\\Desktop\\" + "Backup" + i.ToString() + ".txt");
                 bool verifica = aFile.Exists;
-                if(verifica != false)
+                if (verifica != false)
                 {
                     aFile.Delete();
                 }
-                string path = "C:\\Users\\Mikhael Pedro\\Desktop\\" + "Backup" + i.ToString() + ".txt";
+                
+                var id = DateTime.Now.Ticks;
+                string now = DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss");
+                now = now.Replace('/', '-');
+                now = now.Replace(':', '-');
+
+                //Datetime.parse(DateTime.Now.Ticks);
+                //C: \Users\mikhael.molina\OneDrive - REPLACE PROJETOS E CONSULTORIA EM ENERGIA LTDA\Área de Trabalho\Spider
+                string path = "C:\\Users\\mikhael.molina\\OneDrive - REPLACE PROJETOS E CONSULTORIA EM ENERGIA LTDA\\Área de Trabalho\\Spider\\" + "Backup -" + "Data: " + now + "Id - " + id + ".txt";
 
                 StreamWriter valor = new StreamWriter(path, true, Encoding.ASCII);
                 Console.WriteLine();
