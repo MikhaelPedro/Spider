@@ -23,7 +23,6 @@ namespace _Spider.Entidades
         [JsonProperty("gia")]
         public string Gia { get; set; }
 
-
         //Retorno da Consulta
         public override string ToString()
         {
@@ -35,5 +34,3 @@ namespace _Spider.Entidades
         }
     }
 }
-//Console.Write($"\nLogradouro:{address.Logradouro}\nBairro:{address.Bairro}" +
-//                            $"\nEstado:{address.Uf}\nCódigo Ibge:{address.Ibge}");

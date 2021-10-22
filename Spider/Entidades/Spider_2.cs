@@ -37,7 +37,8 @@ namespace _Spider.Entidades
                 $"          UF: {UF}\n";
             }
             else
-                return $"          CNPJ Inválido!\n";           
+                return $"          CNPJ Invalido!\n";           
         }
+       
     }
 }
