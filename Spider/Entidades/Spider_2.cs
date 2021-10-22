@@ -24,6 +24,7 @@ namespace _Spider.Entidades
         [JsonProperty("status")]
         public string Status { get; set; }
 
+        //Retorno da Consulta
         public override string ToString()
         {
             if (Status != "ERROR")

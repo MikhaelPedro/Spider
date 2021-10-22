@@ -8,7 +8,7 @@
         {
             Texto = texto;
         }
-
+        //metodo para remover acentos
         public string removerAcentos(string texto)
         {
             string comAcentos = "ÄÅÁÂÀÃäáâàãÉÊËÈéêëèÍÎÏÌíîïìÖÓÔÒÕöóôòõÜÚÛüúûùÇç";

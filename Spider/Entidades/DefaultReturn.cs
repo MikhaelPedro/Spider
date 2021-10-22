@@ -18,6 +18,7 @@ namespace Spider.Entidades
             Texto = texto;
         }
 
+        //Menu
         public string Menu()
         {
             return $"        |----------------------------------------------------------|\n" +
@@ -28,6 +29,7 @@ namespace Spider.Entidades
                 $"        |----------------------------------------------------------|\n";
         }
 
+        //Spider 1 Cabecalho
         public string Spider1Cabecalho()
         {
             return $"        |----------------------------------------------------------|\n" +
@@ -35,19 +37,21 @@ namespace Spider.Entidades
                 $"        |----------------------------------------------------------|\n";
         }
 
+        //Spider 2 Cabecalho
         public string Spider2Cabecalho()
         {
             return $"        |----------------------------------------------------------|\n" +
                 $"        |                   Voce esta no Spider 2!                 |\n" +
                 $"        |----------------------------------------------------------|\n";
         }
-
+        //Retorno comando invalido
         public string ComandoInvalido()
         {
             return $"        |----------------------------------------------------------|\n" +
                 $"        | Comando inválido, favor digitar seu comando novamente    |\n" +
                 $"        |----------------------------------------------------------|\n";
         }
+        // Retorno fim da consulta
         public string FimdaConsulta()
         {
             return $"        |----------------------------------------------------------|\n" +
